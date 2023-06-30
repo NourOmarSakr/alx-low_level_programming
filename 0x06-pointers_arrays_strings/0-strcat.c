@@ -2,26 +2,19 @@
 
 char *_strcat(char *dest, char *src)
 {
-    int x = 0; /* index for dest */
-    int y = 0; /* index for src */
+    int x = 0; 
+    int y = 0;
 
-    /* find the end of dest */
-    while (dest[x] != '\0')
+    
+    while (dest[x])
     {
         x++;
     }
 
-    /* append src to dest */
-    while (src[y] != '\0')
+    
+    for (y =0; src[y]; y++)
     {
-        dest[x] = src[y];
-        x++;
-        y++;
+        dest[x++] = src[y];
     }
-
-    /* add the null terminator */
-    dest[x] = '\0';
-
-    /* return the pointer to dest */
     return (dest);
 }
