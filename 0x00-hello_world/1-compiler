@@ -1,2 +1,2 @@
-#!/bin/bash
-gcc -c $CFILE -o 'echo $CFILE | cut -d. -f1'.o
+#!/bin/bas#!/bin/bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c "$CFILE" && mv "${CFILE%.c}".o "${CFILE%.c}".o
