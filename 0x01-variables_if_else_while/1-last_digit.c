@@ -20,13 +20,13 @@ int main(void)
 
 	if (x > 5)
 	{
-		printf("Last digit of %d is %d and is greater than 5", n, last);
-	} else if (x < 5 && last != 0)
+		printf("Last digit of %d is %d and is greater than 5", n, x);
+	} else if (x < 5 && x != 0)
 	{
-		printf("Last digit of %d is %d and is less than 6 and not 0", n, last);
+		printf("Last digit of %d is %d and is less than 6 and not 0", n, x);
 	} else
 	{
-		printf("Last digit of %d is %d and is 0", n, last);
+		printf("Last digit of %d is %d and is 0", n, x);
 	}
 	return (0);
 }
