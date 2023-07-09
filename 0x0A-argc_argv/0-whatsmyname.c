@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	(void)argc; /* to avoid unused variable warning */
-	printf("%s\n", argv[0]); /* print the first argument, which is the program name */
+	(void)argc;
+	printf("%s\n", argv[0];
 	return (0);
 }
