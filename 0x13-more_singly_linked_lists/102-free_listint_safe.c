@@ -1,78 +1,38 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * free_listint_safe - frees a listint_t list
- * @h: pointer to pointer to the first node of the list
- * Return: the size of the list that was free’d
+ * @h: pointer to the head of the list
+ * Return: the size of the list that was freed
  */
 size_t free_listint_safe(listint_t **h)
 {
 	size_t count = 0;
-	listint_t *current, *next, *loop;
+	listint_t *tmp;
+	unsigned long int hash[1024];
+	int i;
 
 	if (h == NULL || *h == NULL)
 		return (0);
 
-	current = *h;
-	loop = find_loop(*h);
+	for (i = 0; i < 1024; i++)
+		hash[i] = 0;
 
-	while (current != NULL)
+	while (*h)
 	{
-		next = current->next;
-		free(current);
+		tmp = (*h)->next;
+		free(*h);
 		count++;
-		if (current == loop)
+		if (hash[(unsigned long int)*h % 1024] == (unsigned long int)*h)
 			break;
-		current = next;
+		hash[(unsigned long int)*h % 1024] = (unsigned long int)*h;
+		*h = tmp;
 	}
 
 	*h = NULL;
 
 	return (count);
-}
-
-/**
- * find_loop - finds the starting node of a loop in a linked list
- * @head: pointer to the first node of the list
- * Return: pointer to the starting node of the loop, or NULL if no loop
- */
-listint_t *find_loop(listint_t *head)
-{
-	listint_t *slow, *fast;
-
-	if (head == NULL)
-		return (NULL);
-
-	slow = head;
-	fast = head;
-
-	while (slow && fast && fast->next)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
-		if (slow == fast)
-			return (find_start(head, slow));
-	}
-
-	return (NULL);
-}
-
-/**
- * find_start - finds the starting node of a loop in a linked list
- * @head: pointer to the first node of the list
- * @meet: pointer to the meeting node of slow and fast pointers
- * Return: pointer to the starting node of the loop
- */
-listint_t *find_start(listint_t *head, listint_t *meet)
-{
-	listint_t *start;
-
-	start = head;
-	while (start != meet)
-	{
-		start = start->next;
-		meet = meet->next;
-	}
-
-	return (start);
 }
