@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - multipies two numbers
@@ -6,19 +7,22 @@
  * @argv: Array of arguments.
  *
  * Return: 0
+ *
  */
 
 int main(int argc, char *argv[])
 {
-	int x = argv[1];
-	int y = argv[2];
+	int x = atoi(argv[1]);
+	int y = atoi(argv[2]);
 	int sum = x * y;
 
-	if (x || y == NULL)
+	if (argc != 3)
 	{
 		printf("Error\n");
-	} else
-	{
-		printf("%i\n", sum);
+		return (1);
 	}
+
+
+	printf("%d\n", sum);
+	return (0);
 }
