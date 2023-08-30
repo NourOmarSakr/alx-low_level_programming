@@ -1,35 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
- * main - multipies two numbers
- * @argc: Number of arguments.
- * @argv: Array of arguments.
- *
- * Return: 0
- *
+ * main - function to print out the change
+ * @argc: number of args
+ * @argv: the args
+ * Return: 0 or 1
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int sum = 0;
-	int i, j;
+	int tot, chg;
 
-	for (i = 1; i < argc; i++)
+	if (argc < 2)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
-		{
-			if (!isdigit(argv[i][j]))
-			{
-				printf("Error\n");
-				return (1);
-			}
-		}
-
-		sum += atoi(argv[i]);
+		printf("Error\n");
+		return (1);
 	}
 
-	printf("%d\n", sum);
+	chg = atoi(argv[1]);
+
+	for (tot = 0; chg > 0; tot++)
+	{
+		if (chg - 25 >= 0)
+			chg = chg - 25;
+		else if (chg - 10 >= 0)
+			chg = chg - 10;
+		else if (chg - 5 >= 0)
+			chg = chg - 5;
+		else if (chg - 2 >= 0)
+			chg = chg - 2;
+		else if (chg - 1 >= 0)
+			chg = chg - 1;
+	}
+	printf("%d\n", tot);
 	return (0);
 }
