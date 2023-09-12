@@ -1,14 +1,8 @@
 #include <stdio.h>
-
 /**
- * main - Prints the source file name.
- *
+ * main - printing the name of the file it was compiled from
  * Return: 0
- *
- * Example:
- * main(); --> "main.c"
  */
-
 int main(void)
 {
 	printf("%s\n", __FILE__);
